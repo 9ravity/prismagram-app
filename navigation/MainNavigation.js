@@ -9,9 +9,9 @@ const MainNavigation = createStackNavigator();
 export default () => {
   return (
     <NavigationContainer>
-      <MainNavigation>
-        <TabNavigation />
-      </MainNavigation>
+      <MainNavigation.Navigator>
+        <MainNavigation.Screen name={"main"} component={TabNavigation} />
+      </MainNavigation.Navigator>
     </NavigationContainer>
   );
 };
