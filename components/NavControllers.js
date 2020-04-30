@@ -1,6 +1,7 @@
 import React from "react";
-import { View } from "react-native";
 import { useIsLoggedIn } from "../AuthContext";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
 import AuthNavigation from "../navigation/AuthNavigation";
 import MainNavigation from "../navigation/MainNavigation";
 
@@ -11,8 +12,8 @@ export default () => {
   // const logIn = useLogIn();
   // const logOut = useLogOut();
   return (
-    <View style={{ flex: 1 }}>
+    <NavigationContainer>
       {isLoggedIn ? <MainNavigation /> : <AuthNavigation />}
-    </View>
+    </NavigationContainer>
   );
 };

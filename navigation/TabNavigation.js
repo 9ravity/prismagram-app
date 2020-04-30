@@ -1,4 +1,3 @@
-import "react-native-gesture-handler";
 import * as React from "react";
 import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -7,7 +6,6 @@ import Search from "../screens/Search";
 import Notifications from "../screens/Notifications";
 import Profile from "../screens/Profile";
 
-//route 역할
 const TabNavigation = createBottomTabNavigator();
 
 export default () => {
@@ -18,12 +16,12 @@ export default () => {
       <TabNavigation.Screen
         name="Add"
         component={View}
-        listeners={{
+        listeners={({ navigation }) => ({
           tabPress: (e) => {
             e.preventDefault();
-            console.log("add");
+            navigation.navigate("Photo");
           },
-        }}
+        })}
       />
       <TabNavigation.Screen name="Notifications" component={Notifications} />
       <TabNavigation.Screen name="Profile" component={Profile} />
