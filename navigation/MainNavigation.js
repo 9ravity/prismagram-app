@@ -1,13 +1,24 @@
-import * as React from "react";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import TabNavigation from "./TabNavigation";
+import PhotoNavigation from "./PhotoNavigation";
+import MessageNavigation from "./MessageNavigation";
 
-const MainNavigation = createStackNavigator();
+const Stack = createStackNavigator();
 
 export default () => {
   return (
-    <MainNavigation.Navigator>
-      <MainNavigation.Screen name={"tab"} component={TabNavigation} />
-    </MainNavigation.Navigator>
+    <NavigationContainer>
+      <Stack.Navigator
+        headerMode="none"
+        mode="modal"
+        initialRouteName="TabNavigation"
+      >
+        <Stack.Screen name="TabNavigation" component={TabNavigation} />
+        <Stack.Screen name="PhotoNavigation" component={PhotoNavigation} />
+        <Stack.Screen name="MessageNavigation" component={MessageNavigation} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };

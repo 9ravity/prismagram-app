@@ -1,29 +1,27 @@
 import * as React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import selectPhoto from "../screens/Photo/SelectPhoto";
-import takePhoto from "../screens/Photo/TakePhoto";
-import uploadPhoto from "../screens/Photo/UploadPhoto";
+import { createStackNavigator } from "@react-navigation/stack";
+import SelectPhoto from "../screens/Photo/SelectPhoto";
+import TakePhoto from "../screens/Photo/TakePhoto";
+import UploadPhoto from "../screens/Photo/UploadPhoto";
 
-const PhotoNavigation = createMaterialTopTabNavigator();
+const Tab = createMaterialTopTabNavigator();
+const Stack = createStackNavigator();
+
+const PhotoTabs = () => {
+  return (
+    <Tab.Navigator tabBarPosition="bottom">
+      <Tab.Screen name="SelectPhoto" component={SelectPhoto} />
+      <Tab.Screen name="TakePhoto" component={TakePhoto} />
+    </Tab.Navigator>
+  );
+};
 
 export default () => {
   return (
-    <PhotoNavigation.Navigator>
-      <PhotoNavigation.Screen
-        name={"select"}
-        component={selectPhoto}
-        options={{ tabBarLabel: "selectoption" }}
-      />
-      <PhotoNavigation.Screen
-        name={"take"}
-        component={takePhoto}
-        options={{ tabBarLabel: "takeoptin" }}
-      />
-      <PhotoNavigation.Screen
-        name={"upload"}
-        component={uploadPhoto}
-        options={{ tabBarLabel: "uploadoption" }}
-      />
-    </PhotoNavigation.Navigator>
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="PhotoTabs" component={PhotoTabs} />
+      <Stack.Screen name="UploadPhoto" component={UploadPhoto} />
+    </Stack.Navigator>
   );
 };
